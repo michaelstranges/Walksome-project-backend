@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <title>Google Maps API v3: Criando um mapa personalizado</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script
+    </head>
+ 
+    <body>
+        <!-- Maps API Javascript -->
+
+
+<h1>HELLO WORLD</h1>
+<aside>
+<form method="POST" action="routes/new">                                                               
+  <input type="text" name="name" placeholder="Paths name">
+  <input type="number" name="walk_time" placeholder="walk time">
+  <input type="text" name="user_id" placeholder="user_id">
+  <input type="text" name="description" placeholder="description">
+<!--   <input type="text" name="comments" placeholder="comments">
+  <input type="number" name="rating" placeholder="ratings">
+ -->
+
+
+  <input type="submit" name="submit">
+
+</form>
+</aside>
+
+<% if (result) { %>
+
+    <% for(let item in result) {%>
+    <div>
+    
+     
+    <h3>
+      <div id="content">
+            id: <%= item%>
+            <%= result[item].name %> <br/>
+           walk time: <%= result[item].walk_time %>
+           Said: <%= result[item].description%><br/> user: 
+           <%= result[item].user_id%>
+           ratings: <br/>
+           <%= result[item].ratings%>
+
+           <%if (result[item].comments){%>
+             <div>
+            <h2>Comments about this Route:</h2>
+            <% result[item].comments.forEach((comment)=>{ %>
+           
+              <h4>"<%=comment%>"</h4>
+            
+
+            <%})%>
+            </div>
+            
+           <%}%>
+      </div>
+    </h3>
+
+
+    <div id="mapa" style="height: 300px; width: 500px"></div>
+
+    </div>
+    <button><a href=<%=`/routes/${item}`%>>EDIT</a></button>
+    <form action=<%=`/routes/${item}/delete?_method=DELETE`%>  method="POST" >
+    <input type="submit" value="DELETE"/></form>
+
+<%}%>
+
+<% } %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtYUmgpgghog7SihlzqQuW4SznV9FJ70w&amp=false"></script>
+ 
+        <!-- Arquivo de inicialização do mapa -->
+        <script src="../scripts/maps.js"></script>
+    </body>
+</html>
+

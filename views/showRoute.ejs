@@ -1,0 +1,30 @@
+<h1>hello LHL</h1>
+
+<form method="POST" action=<%= `/routes/${result[0].id}/edit?_method=PUT`%> id="testingForm">
+  <input type="text" name="name" placeholder="Paths name" 
+  value=<%= result[0].name %>>
+  <input type="number" name="walk_time" placeholder="walk time" 
+  value=<%= result[0].walk_time %>>
+  <input type="text" name="user_id" placeholder="user_id" 
+  value=<%= result[0].user_id %>>
+  <textarea form="testingForm" name="description"><%= result[0].description%></textarea>
+  
+  <input type="submit" name="submit">
+
+
+</form>
+
+
+
+<h1>hello LHL</h1>
+
+<% user.forEach(item=>{ %>
+
+<div >
+
+<img src=/<%= item.profilePicture %>>
+
+</div>
+
+
+<% }) %>
